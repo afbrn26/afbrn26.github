@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nabila Syahidah</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #F98B88; /* Ganti dengan warna tombol */
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 90%;
+            padding: 20px;
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparansi putih agar teks tetap terbaca */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            transition: background-image 1s ease-in-out;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #F98B88;
+            color: white;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #D86A67;
+            transform: scale(1.1);
+        }
+
+        .happy-message {
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #F98B88;
+        }
+
+        video {
+            width: 30%;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="backgroundContainer">
+        <div class="happy-message">Bahagia Selalu!</div>
+        <video controls>
+            <source src="vid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button onclick="window.location.href='index.html'">Kembali ke Awal</button>
+        <button onclick="window.location.href='choice2.html'">Kanan</button>
+    </div>
+
+    <script>
+        // Daftar gambar untuk background
+        const images = [
+            'gambar1.jpg',
+            'gambar2.jpg',
+            'gambar3.jpg',
+            'gambar4.jpg',
+            'gambar5.jpg',
+            'gambar6.jpg',
+            'gambar7.jpg'
+        ];
+
+        let currentImageIndex = 0;
+        const container = document.getElementById('backgroundContainer');
+
+        // Fungsi untuk mengubah background setiap 5 detik
+        function changeBackground() {
+            container.style.backgroundImage = `url('${images[currentImageIndex]}')`;
+            currentImageIndex = (currentImageIndex + 1) % images.length; // Berputar kembali ke awal
+        }
+
+        // Memulai interval perubahan background
+        setInterval(changeBackground, 5000); // Ganti background setiap 5 detik
+    </script>
+</body>
+</html>

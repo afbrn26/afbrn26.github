@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terima Kasih</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #F0F0F0; /* Warna latar belakang */
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+            overflow: hidden; /* Menghindari scroll karena efek jatuh */
+        }
+
+        .container {
+            max-width: 90%;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            position: relative;
+            z-index: 10; /* Memastikan elemen di atas huruf yang jatuh */
+        }
+
+        .turtle-message {
+            margin-top: 20px;
+            font-size: 2em; /* Ukuran teks Turtle */
+            color: #F98B88; /* Warna teks */
+        }
+
+        /* Styling untuk huruf jatuh */
+        .falling-initial {
+            position: absolute;
+            top: -50px; /* Mulai dari atas layar */
+            font-size: 2em;
+            font-weight: bold;
+            color: rgba(249, 139, 136, 0.7); /* Warna inisial */
+            pointer-events: none; /* Menghindari interaksi mouse */
+            animation: fall linear infinite;
+        }
+
+        /* Keyframes untuk animasi jatuh */
+        @keyframes fall {
+            to {
+                transform: translateY(100vh); /* Jatuh hingga ke bawah layar */
+                opacity: 0; /* Menghilang setelah melewati layar */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Terima Kasih Sudah Melihat Sampai Akhir Nabila!</h1>
+        <div class="turtle-message" id="turtle-message"></div>
+    </div>
+
+    <script>
+        // Fungsi untuk menampilkan teks di canvas
+        function drawTurtleText() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 400; // Lebar canvas
+            canvas.height = 200; // Tinggi canvas
+            document.body.appendChild(canvas);
+
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = "#F98B88"; // Warna teks
+            ctx.font = "bold 30px Arial";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText("Nabila Syahidah 20 Tahun", canvas.width / 2, canvas.height / 2);
+        }
+
+        drawTurtleText(); // Memanggil fungsi untuk menggambar teks
+
+        // Fungsi untuk membuat elemen huruf jatuh secara acak
+        function createFallingInitial() {
+            const initial = document.createElement('div');
+            initial.classList.add('falling-initial');
+            initial.textContent = Math.random() > 0.5 ? 'A' : 'F'; // Pilih secara acak antara 'A' dan 'F'
+            initial.style.left = Math.random() * 100 + 'vw'; // Posisi horizontal acak
+            initial.style.animationDuration = Math.random() * 3 + 2 + 's'; // Kecepatan jatuh acak
+
+            document.body.appendChild(initial);
+
+            // Menghapus huruf setelah animasi selesai
+            initial.addEventListener('animationend', () => {
+                initial.remove();
+            });
+        }
+
+        // Membuat huruf jatuh baru setiap 300 milidetik
+        setInterval(createFallingInitial, 300);
+    </script>
+</body>
+</html>

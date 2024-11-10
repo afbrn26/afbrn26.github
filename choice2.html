@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanan</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('path-to-your-photo.jpg'); /* Path ke foto kalian berdua */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 90%;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #F98B88;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #F98B88;
+        }
+
+        /* CSS for falling beads */
+        .bead {
+            position: fixed;
+            top: -50px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #F98B88;
+            opacity: 0.7;
+            animation: fall linear forwards;
+        }
+
+        /* Animation for falling beads */
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Haii Nabb!!!</h1>
+        <p>Nabila Syahidah! Semoga Allah selalu memberkahi setiap langkahmu, memberikan kesehatan, keberkahan usia, serta kebahagiaan yang tak terhingga dalam hidupmu. Semoga segala impianmu tercapai dan diberikan kekuatan untuk menghadapi setiap ujian.
+            “Ya Allah, panjangkanlah usianya dalam kebaikan dan berkahilah hidupnya. Jadikanlah setiap hari yang dilaluinya penuh manfaat, kemudahan, dan keberkahan. Berikanlah kebahagiaan dunia dan akhirat serta lindungilah ia dari segala hal yang buruk. Aamiin.”
+        </p>
+        <button onclick="window.location.href='index.html'">Kembali ke Awal</button>
+        <button onclick="window.location.href='thankyou.html'">Selesai</button>
+    </div>
+
+    <script>
+        // Function to create and animate falling beads
+        function createBead() {
+            const bead = document.createElement('div');
+            bead.classList.add('bead');
+            bead.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+            bead.style.animationDuration = Math.random() * 2 + 3 + 's'; // Random fall duration
+            document.body.appendChild(bead);
+
+            bead.addEventListener('animationend', () => {
+                bead.remove(); // Remove bead after it falls
+            });
+        }
+
+        // Function to generate a larger number of beads
+        function generateBeads() {
+            for (let i = 0; i < 200; i++) { // Increased number of beads to 200
+                setTimeout(createBead, i * 50); // Staggered with a shorter interval
+            }
+        }
+
+        // Trigger bead animation when the page loads
+        window.onload = generateBeads;
+    </script>
+</body>
+</html>
